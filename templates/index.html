@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Fitness Status Prediction</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">Health Fitness Status Prediction</h1>
+        <p class="subtitle">Enter your personal and medical details below to predict your health fitness status.</p>
+
+        <form method="POST" class="form">
+            <div class="form-group">
+                <label for="BMICat">Kategori BMI:</label>
+                <select name="BMICat" id="BMICat" required>
+                    <option value="0">Normal</option>
+                    <option value="1">Obesitas I</option>
+                    <option value="2">Obesitas II</option>
+                    <option value="3">Over Weight</option>
+                    <option value="4">Under Weight</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="Hipertensi_Kategori">Kategori Hipertensi:</label>
+                <select name="Hipertensi_Kategori" id="Hipertensi_Kategori" required>
+                    <option value="2">Normal</option>
+                    <option value="0">Hipertensi Tingkat 1</option>
+                    <option value="1">Hipertensi Tingkat 2</option>
+                    <option value="3">Pra-hipertensi</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="tuberkulosis">tuberkulosis:</label>
+                <select name="tuberkulosis" id="tuberkulosis" required>
+                    <option value="1">tidak</option>
+                    <option value="0">ada</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="penyakit_jantung">penyakit jantung:</label>
+                <select name="penyakit_jantung" id="penyakit_jantung" required>
+                    <option value="1">tidak</option>
+                    <option value="0">ada</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="hipertensi">hipertensi:</label>
+                <select name="hipertensi" id="hipertensi" required>
+                    <option value="1">tidak</option>
+                    <option value="0">ada</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="diabetes_melitus">diabetes melitus:</label>
+                <select name="diabetes_melitus" id="diabetes_melitus" required>
+                    <option value="1">tidak</option>
+                    <option value="0">ada</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="gangguan_jiwa">gangguan jiwa:</label>
+                <select name="gangguan_jiwa" id="gangguan_jiwa" required>
+                    <option value="1">tidak</option>
+                    <option value="0">ada</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="trauma_pada_kepala">trauma pada kepala:</label>
+                <select name="trauma_pada_kepala" id="trauma_pada_kepala" required>
+                    <option value="1">tidak</option>
+                    <option value="0">ada</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="hepatitis">hepatitis:</label>
+                <select name="hepatitis" id="hepatitis" required>
+                    <option value="1">tidak</option>
+                    <option value="0">ada</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="Spirometri">Spirometri:</label>
+                <select name="Spirometri" id="Spirometri" required>
+                    <option value="0">normal</option>
+                    <option value="1">tidak normal</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="Treadmil">Treadmil:</label>
+                <select name="Treadmil" id="Treadmil" required>
+                    <option value="0">normal</option>
+                    <option value="1">tidak normal</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="Audiometri">Audiometri:</label>
+                <select name="Audiometri" id="Audiometri" required>
+                    <option value="0">normal</option>
+                    <option value="1">tidak normal</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="foto_thorax">foto thorax:</label>
+                <select name="foto_thorax" id="foto_thorax" required>
+                    <option value="0">normal</option>
+                    <option value="1">tidak normal</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="Nadi(kali/menit)">Nadi (kali/menit):</label>
+                <select name="Nadi(kali/menit)" id="Nadi(kali/menit)" required>
+                    <option value="0">normal</option>
+                    <option value="1">tidak normal</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="FrekuensiNapas(kali/menit)">Frekuensi Napas (kali/menit):</label>
+                <select name="FrekuensiNapas(kali/menit)" id="FrekuensiNapas(kali/menit)" required>
+                    <option value="0">normal</option>
+                    <option value="1">tidak normal</option>
+                </select>
+            </div>
+            <!-- Medical History -->
+            <div class="form-group">
+                <label for="Tingkatan_Kesadaran">Tingkatan Kesadaran:</label>
+                <select name="Tingkatan_Kesadaran" id="Tingkatan_Kesadaran" required>
+                    <option value="1">compos mentis</option>
+                    <option value="0">apatis</option>
+                    <option value="2">delirium</option>         
+                    <option value="3">koma</option>         
+                    <option value="4">semi koma</option>         
+                    <option value="5">somnolen</option>         
+                    <option value="6">sopor</option>         
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="Buta_Warna">Buta Warna:</label>
+                <select name="Buta_Warna" id="Buta_Warna" required>
+                    <option value="0">tidak</option>
+                    <option value="1">ya</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="Jantung">Jantung:</label>
+                <select name="Jantung" id="Jantung" required>
+                    <option value="0">normal</option>
+                    <option value="1">tidak normal</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="hemoglobin">hemoglobin:</label>
+                <select name="hemoglobin" id="hemoglobin" required>
+                    <option value="0">normal</option>
+                    <option value="1">tidak normal</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="leukosit">leukosit:</label>
+                <select name="leukosit" id="leukosit" required>
+                    <option value="0">normal</option>
+                    <option value="1">tidak normal</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="eritrosit">eritrosit:</label>
+                <select name="eritrosit" id="eritrosit" required>
+                    <option value="0">normal</option>
+                    <option value="1">tidak normal</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="LED">LED:</label>
+                <select name="LED" id="LED" required>
+                    <option value="0">normal</option>
+                    <option value="1">tidak normal</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="eosinofil">eosinofil:</label>
+                <select name="eosinofil" id="eosinofil" required>
+                    <option value="0">normal</option>
+                    <option value="1">tidak normal</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="basofil">basofil:</label>
+                <select name="basofil" id="basofil" required>
+                    <option value="0">normal</option>
+                    <option value="1">tidak normal</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="neutrofil">neutrofil:</label>
+                <select name="neutrofil" id="neutrofil" required>
+                    <option value="0">normal</option>
+                    <option value="1">tidak normal</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="lymphosit">lymphosit:</label>
+                <select name="lymphosit" id="lymphosit" required>
+                    <option value="0">normal</option>
+                    <option value="1">tidak normal</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="monosit">monosit:</label>
+                <select name="monosit" id="monosit" required>
+                    <option value="0">normal</option>
+                    <option value="1">tidak normal</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="trombosit">trombosit:</label>
+                <select name="trombosit" id="trombosit" required>
+                    <option value="0">normal</option>
+                    <option value="1">tidak normal</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="hematokrit">hematokrit:</label>
+                <select name="hematokrit" id="hematokrit" required>
+                    <option value="0">normal</option>
+                    <option value="1">tidak normal</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="MCV">MCV:</label>
+                <select name="MCV" id="MCV" required>
+                    <option value="0">normal</option>
+                    <option value="1">tidak normal</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="SGOT">S G O T:</label>
+                <select name="SGOT" id="SGOT" required>
+                    <option value="0">normal</option>
+                    <option value="1">tidak normal</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="SGPT">S G P T:</label>
+                <select name="SGPT" id="SGPT" required>
+                    <option value="0">normal</option>
+                    <option value="1">tidak normal</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="BUN">B U N:</label>
+                <select name="BUN" id="BUN" required>
+                    <option value="0">normal</option>
+                    <option value="1">tidak normal</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="kreatinin">kreatinin:</label>
+                <select name="kreatinin" id="kreatinin" required>
+                    <option value="0">normal</option>
+                    <option value="1">tidak normal</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="asam_urat">asam urat:</label>
+                <select name="asam_urat" id="asam_urat" required>
+                    <option value="0">normal</option>
+                    <option value="1">tidak normal</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="kolestrol_total">kolestrol total:</label>
+                <select name="kolestrol_total" id="kolestrol_total" required>
+                    <option value="0">normal</option>
+                    <option value="1">tidak normal</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="trigliserida">trigliserida:</label>
+                <select name="trigliserida" id="trigliserida" required>
+                    <option value="0">normal</option>
+                    <option value="1">tidak normal</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="kolestrol_HDL_(direct)">kolestrol HDL (direct):</label>
+                <select name="kolestrol_HDL_(direct)" id="kolestrol_HDL_(direct)" required>
+                    <option value="0">normal</option>
+                    <option value="1">tidak normal</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="kolestrol_LDL_(direct)">kolestrol LDL (direct):</label>
+                <select name="kolestrol_LDL_(direct)" id="kolestrol_LDL_(direct)" required>
+                    <option value="0">normal</option>
+                    <option value="1">tidak normal</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="gula_darah_puasa">gula darah puasa:</label>
+                <select name="gula_darah_puasa" id="gula_darah_puasa" required>
+                    <option value="1">normal</option>
+                    <option value="2">tidak normal</option>
+                    <option value="0">diatas 200</option>
+                </select>
+                </div>
+            <div class="form-group">
+                 <label for="gula_darah_2_jam_pp">gula darah 2 jam pp:</label>
+                 <select name="gula_darah_2_jam_pp" id="gula_darah_2_jam_pp" required>
+                    <option value="1">normal</option>
+                    <option value="2">tidak normal</option>
+                    <option value="0">diatas 200</option>
+                </select>
+             </div>
+            <div class="form-group">
+                <label for="anti_HbBs">'Anti HBs':</label>
+                <select name="anti_HbBs" id="anti_HbBs" required>
+                    <option value="1">positif</option>
+                    <option value="0">negatif</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="HBs_Ag_Kuantitatif">'HBs Ag Kuantitatif':</label>
+                <select name="HBs_Ag_Kuantitatif" id="HBs_Ag_Kuantitatif" required>
+                    <option value="0">negatif</option>
+                    <option value="1">positif</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="pH_pada_urine">pH pada urine:</label>
+                <select name="pH_pada_urine" id="pH_pada_urine" required>
+                    <option value="0">normal</option>
+                    <option value="1">tidak normal</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="berat_jenis_pada_urine">berat jenis pada urine:</label>
+                <select name="berat_jenis_pada_urine" id="berat_jenis_pada_urine" required>
+                    <option value="0">normal</option>
+                    <option value="1">tidak normal</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="nitrite_pada_urine">nitrite pada urine:</label>
+                <select name="nitrite_pada_urine" id="nitrite_pada_urine" required>
+                    <option value="0">negatif</option>
+                    <option value="1">positif</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="protein_pada_urine">protein pada urine:</label>
+                <select name="protein_pada_urine" id="protein_pada_urine" required>
+                    <option value="0">negatif</option>
+                    <option value="1">positif</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="reduksi_pada_urine">reduksi pada urine:</label>
+                <select name="reduksi_pada_urine" id="reduksi_pada_urine" required>
+                    <option value="0">negatif</option>
+                    <option value="1">positif 1</option>
+                    <option value="2">positif 2</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="ketone_pada_urine">ketone pada urine:</label>
+                <select name="ketone_pada_urine" id="ketone_pada_urine" required>
+                    <option value="0">negatif</option>
+                    <option value="1">positif</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="urobilinogen_pada_urine">urobilinogen pada urine:</label>
+                <select name="urobilinogen_pada_urine" id="urobilinogen_pada_urine" required>
+                    <option value="0">negatif</option>
+                    <option value="1">positif</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="billirubin_pada_urine">billirubin pada urine:</label>
+                <select name="billirubin_pada_urine" id="billirubin_pada_urine" required>
+                    <option value="0">negatif</option>
+                    <option value="1">positif</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="eritrosit_pada_urine">eritrosit pada urine:</label>
+                <select name="eritrosit_pada_urine" id="eritrosit_pada_urine" required>
+                    <option value="0">normal</option>
+                    <option value="1">tidak normal</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="lekosit_pada_urine">lekosit pada urine:</label>
+                <select name="lekosit_pada_urine" id="lekosit_pada_urine" required>
+                    <option value="0">normal</option>
+                    <option value="1">tidak normal</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="silinder_pada_urine">silinder pada urine:</label>
+                <select name="silinder_pada_urine" id="silinder_pada_urine" required>
+                    <option value="0">negatif</option>
+                    <option value="1">positif</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="kristal_pada_urine">kristal pada urine:</label>
+                <select name="kristal_pada_urine" id="kristal_pada_urine" required>
+                    <option value="0">negatif</option>
+                    <option value="1">positif</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="yeast_pada_urine">yeast pada urine:</label>
+                <select name="yeast_pada_urine" id="yeast_pada_urine" required>
+                    <option value="0">negatif</option>
+                    <option value="1">positif</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="bakteri_pada_urine">bakteri pada urine:</label>
+                <select name="bakteri_pada_urine" id="bakteri_pada_urine" required>
+                    <option value="0">negatif</option>
+                    <option value="1">positif</option>
+                </select>
+            </div>
+            <!-- Submit Button -->
+            <button type="submit" class="btn">Predict</button>
+        </form>
+
+        {% if result %}
+        <div class="result">
+            <h2>Prediction Result</h2>
+            <p>{{ result }}</p>
+        </div>
+        {% endif %}
+        
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const resultElement = document.querySelector(".result");
+            if (resultElement) {
+                setTimeout(() => {
+                    resultElement.style.opacity = "1";
+                    resultElement.style.transform = "translateY(0)";
+                }, 300); // Penundaan 300ms
+            }
+        });
+    </script>
+    
+</body>
+
+</html>

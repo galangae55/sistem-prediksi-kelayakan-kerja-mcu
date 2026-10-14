@@ -1,0 +1,39 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+build/
+dist/
+*.egg-info/
+*.egg
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*/.ipynb_checkpoints/*
+
+# Large Machine Learning Models (>100 MB ditolak GitHub)
+models/*.pkl
+models/*.joblib
+models/*.h5
+*.pkl
+
+# Large Datasets (>100 MB ditolak GitHub)
+data/dataset_berat_jenis_updated.csv
+data/Health_Screening_Labeled_Numeric.csv
+*.csv.gz
+*.zip
+
+# Operating System & IDE
+.DS_Store
+Thumbs.db
+desktop.ini
+*.log
+.vscode/
+.idea/
+.env
+.venv
