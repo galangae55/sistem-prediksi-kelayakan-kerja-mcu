@@ -1,11 +1,11 @@
-# Sistem Prediksi Kelaikan Kerja Berdasarkan Medical Check-Up (MCU)
+# Sistem Evaluasi Kelayakan & Kebugaran Medis Kerja Berdasarkan Medical Check-Up (MCU)
 
 [![Python](https://img.shields.io/badge/Python-3.9%2B-blue.svg)](https://www.python.org/)
 [![Flask](https://img.shields.io/badge/Framework-Flask-black.svg)](https://flask.palletsprojects.com/)
 [![Scikit-Learn](https://img.shields.io/badge/ML-Scikit--Learn%20%7C%20XGBoost-orange.svg)](https://scikit-learn.org/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)]()
 
-Sistem kecerdasan buatan berbasis *Machine Learning* dan aplikasi web interaktif untuk memprediksi status kelayakan kesehatan kerja (*Occupational Health & Fitness-to-Work Screening*). Sistem ini mengolah data pemeriksaan medis menyeluruh (*Medical Check-Up*), mencakup tanda vital, riwayat penyakit, rekam medis organ vital, hematologi darah lengkap, profil biokimia darah (fungsi hati, ginjal, lipid, gula), hingga urinalisis lengkap.
+Sistem kecerdasan buatan berbasis *Machine Learning* dan aplikasi web interaktif untuk mengevaluasi status kelayakan kesehatan kerja (*Occupational Health & Fitness-to-Work Screening*). Sistem ini mengolah data pemeriksaan medis menyeluruh (*Medical Check-Up*), mencakup tanda vital, riwayat penyakit, rekam medis organ vital, hematologi darah lengkap, profil biokimia darah (fungsi hati, ginjal, lipid, gula), hingga urinalisis lengkap.
 
 ---
 
@@ -25,21 +25,22 @@ Sistem kecerdasan buatan berbasis *Machine Learning* dan aplikasi web interaktif
 Evaluasi kesehatan kerja (*Fit-to-Work Assessment*) merupakan komponen krusial dalam Kesehatan dan Keselamatan Kerja (K3) untuk memastikan pekerja berada dalam kondisi optimal serta mencegah risiko kecelakaan kerja atau perburukan penyakit akibat kerja. 
 
 Proyek ini bertujuan untuk:
-1. Mengotomatisasi penentuan status kelaikan kerja berdasarkan puluhan indikator pemeriksaan medis terpadu.
+1. Mengotomatisasi penentuan status kebugaran kerja berdasarkan puluhan indikator pemeriksaan medis terpadu.
 2. Membantu dokter pemeriksa kesehatan kerja dan praktisi HR/K3 dalam mengambil keputusan berbasis data klinis yang konsisten.
 3. Menyediakan antarmuka web yang mudah digunakan untuk penginputan hasil MCU serta inferensi status kesehatan secara *real-time*.
 
 ---
 
 ## 🏷 Klasifikasi Status Kesehatan Kerja
-Sistem mengklasifikasikan kondisi pekerja ke dalam 4 kategori status kelaikan:
+Sistem mengklasifikasikan kondisi pekerja ke dalam 4 kategori status kesehatan kerja:
 
 | Kode | Status | Definisi & Kriteria Klinis |
 | :---: | :--- | :--- |
-| **0** | **Fit to Work** | Kondisi sehat prima tanpa kelainan klinis atau laboratorium yang signifikan. Pekerja laik ditempatkan di seluruh unit kerja. |
-| **1** | **Fit with Note** | Kondisi fisik laik kerja namun ditemukan kelainan ringan/faktor risiko (misal: pra-hipertensi, kolesterol/asam urat batas atas, kelainan urine ringan) yang memerlukan edukasi dan pemantauan berkala. |
-| **2** | **Fit with Restriction** | Ditemukan kelainan kesehatan yang membatasi kapasitas kerja (misal: obesitas tingkat lanjut, hipertensi tingkat 2, buta warna, gangguan fungsi spirometri/paru, diabetes tidak terkontrol). Memerlukan penyesuaian beban kerja. |
-| **3** | **Unfit** | Kondisi penyakit kritis/berat yang membahayakan diri sendiri atau orang lain (misal: penyakit jantung simtomatik, hepatitis aktif, gangguan jiwa berat, riwayat trauma kepala mayor, hasil uji treadmill positif). Tidak laik bekerja sementara/permanen. |
+| **0** | **Fit to Work** | Kondisi sehat prima tanpa kelainan klinis atau laboratorium yang signifikan. Pekerja memenuhi syarat ditempatkan di seluruh unit kerja. |
+| **1** | **Fit with Note** | Kondisi fisik memenuhi syarat kerja namun ditemukan kelainan ringan/faktor risiko (misal: pra-hipertensi, kolesterol/asam urat batas atas, kelainan urine ringan) yang memerlukan edukasi dan pemantauan berkala. |
+| **2** | **Fit with Restriction** | Ditemukan kelainan kesehatan yang membatasi kapasitas kerja (misal: obesitas tingkat lanjut, hipertensi tingkat 2, buta warna, gangguan fungsi spirometri/paru, diabetes tidak terkontrol). Memerlukan penyesuaian beban kerja (*Job Adjustment*). |
+| **3** | **Unfit** | Kondisi penyakit kritis/berat yang membahayakan diri sendiri atau orang lain (misal: penyakit jantung simtomatik, hepatitis aktif, gangguan jiwa berat, riwayat trauma kepala mayor, hasil uji treadmill positif). Tidak memenuhi syarat kerja sementara dan wajib dirujuk ke dokter spesialis. |
+
 
 ---
 

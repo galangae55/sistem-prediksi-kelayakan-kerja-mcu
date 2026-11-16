@@ -1,459 +1,1233 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Health Fitness Status Prediction</title>
+    <meta name="description" content="Sistem Informasi & Evaluasi Kelayakan Medis Karyawan Berdasarkan Medical Check-Up (MCU)">
+    <title>RS Medika OHC — Sistem Evaluasi Hasil Medical Check-Up (MCU) Karyawan</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
-    <div class="container">
-        <h1 class="title">Health Fitness Status Prediction</h1>
-        <p class="subtitle">Enter your personal and medical details below to predict your health fitness status.</p>
-
-        <form method="POST" class="form">
-            <div class="form-group">
-                <label for="BMICat">Kategori BMI:</label>
-                <select name="BMICat" id="BMICat" required>
-                    <option value="0">Normal</option>
-                    <option value="1">Obesitas I</option>
-                    <option value="2">Obesitas II</option>
-                    <option value="3">Over Weight</option>
-                    <option value="4">Under Weight</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="Hipertensi_Kategori">Kategori Hipertensi:</label>
-                <select name="Hipertensi_Kategori" id="Hipertensi_Kategori" required>
-                    <option value="2">Normal</option>
-                    <option value="0">Hipertensi Tingkat 1</option>
-                    <option value="1">Hipertensi Tingkat 2</option>
-                    <option value="3">Pra-hipertensi</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label for="tuberkulosis">tuberkulosis:</label>
-                <select name="tuberkulosis" id="tuberkulosis" required>
-                    <option value="1">tidak</option>
-                    <option value="0">ada</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label for="penyakit_jantung">penyakit jantung:</label>
-                <select name="penyakit_jantung" id="penyakit_jantung" required>
-                    <option value="1">tidak</option>
-                    <option value="0">ada</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label for="hipertensi">hipertensi:</label>
-                <select name="hipertensi" id="hipertensi" required>
-                    <option value="1">tidak</option>
-                    <option value="0">ada</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label for="diabetes_melitus">diabetes melitus:</label>
-                <select name="diabetes_melitus" id="diabetes_melitus" required>
-                    <option value="1">tidak</option>
-                    <option value="0">ada</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label for="gangguan_jiwa">gangguan jiwa:</label>
-                <select name="gangguan_jiwa" id="gangguan_jiwa" required>
-                    <option value="1">tidak</option>
-                    <option value="0">ada</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="trauma_pada_kepala">trauma pada kepala:</label>
-                <select name="trauma_pada_kepala" id="trauma_pada_kepala" required>
-                    <option value="1">tidak</option>
-                    <option value="0">ada</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="hepatitis">hepatitis:</label>
-                <select name="hepatitis" id="hepatitis" required>
-                    <option value="1">tidak</option>
-                    <option value="0">ada</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="Spirometri">Spirometri:</label>
-                <select name="Spirometri" id="Spirometri" required>
-                    <option value="0">normal</option>
-                    <option value="1">tidak normal</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="Treadmil">Treadmil:</label>
-                <select name="Treadmil" id="Treadmil" required>
-                    <option value="0">normal</option>
-                    <option value="1">tidak normal</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="Audiometri">Audiometri:</label>
-                <select name="Audiometri" id="Audiometri" required>
-                    <option value="0">normal</option>
-                    <option value="1">tidak normal</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="foto_thorax">foto thorax:</label>
-                <select name="foto_thorax" id="foto_thorax" required>
-                    <option value="0">normal</option>
-                    <option value="1">tidak normal</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="Nadi(kali/menit)">Nadi (kali/menit):</label>
-                <select name="Nadi(kali/menit)" id="Nadi(kali/menit)" required>
-                    <option value="0">normal</option>
-                    <option value="1">tidak normal</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="FrekuensiNapas(kali/menit)">Frekuensi Napas (kali/menit):</label>
-                <select name="FrekuensiNapas(kali/menit)" id="FrekuensiNapas(kali/menit)" required>
-                    <option value="0">normal</option>
-                    <option value="1">tidak normal</option>
-                </select>
-            </div>
-            <!-- Medical History -->
-            <div class="form-group">
-                <label for="Tingkatan_Kesadaran">Tingkatan Kesadaran:</label>
-                <select name="Tingkatan_Kesadaran" id="Tingkatan_Kesadaran" required>
-                    <option value="1">compos mentis</option>
-                    <option value="0">apatis</option>
-                    <option value="2">delirium</option>         
-                    <option value="3">koma</option>         
-                    <option value="4">semi koma</option>         
-                    <option value="5">somnolen</option>         
-                    <option value="6">sopor</option>         
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="Buta_Warna">Buta Warna:</label>
-                <select name="Buta_Warna" id="Buta_Warna" required>
-                    <option value="0">tidak</option>
-                    <option value="1">ya</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="Jantung">Jantung:</label>
-                <select name="Jantung" id="Jantung" required>
-                    <option value="0">normal</option>
-                    <option value="1">tidak normal</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="hemoglobin">hemoglobin:</label>
-                <select name="hemoglobin" id="hemoglobin" required>
-                    <option value="0">normal</option>
-                    <option value="1">tidak normal</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="leukosit">leukosit:</label>
-                <select name="leukosit" id="leukosit" required>
-                    <option value="0">normal</option>
-                    <option value="1">tidak normal</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="eritrosit">eritrosit:</label>
-                <select name="eritrosit" id="eritrosit" required>
-                    <option value="0">normal</option>
-                    <option value="1">tidak normal</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="LED">LED:</label>
-                <select name="LED" id="LED" required>
-                    <option value="0">normal</option>
-                    <option value="1">tidak normal</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="eosinofil">eosinofil:</label>
-                <select name="eosinofil" id="eosinofil" required>
-                    <option value="0">normal</option>
-                    <option value="1">tidak normal</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="basofil">basofil:</label>
-                <select name="basofil" id="basofil" required>
-                    <option value="0">normal</option>
-                    <option value="1">tidak normal</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="neutrofil">neutrofil:</label>
-                <select name="neutrofil" id="neutrofil" required>
-                    <option value="0">normal</option>
-                    <option value="1">tidak normal</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="lymphosit">lymphosit:</label>
-                <select name="lymphosit" id="lymphosit" required>
-                    <option value="0">normal</option>
-                    <option value="1">tidak normal</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="monosit">monosit:</label>
-                <select name="monosit" id="monosit" required>
-                    <option value="0">normal</option>
-                    <option value="1">tidak normal</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="trombosit">trombosit:</label>
-                <select name="trombosit" id="trombosit" required>
-                    <option value="0">normal</option>
-                    <option value="1">tidak normal</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="hematokrit">hematokrit:</label>
-                <select name="hematokrit" id="hematokrit" required>
-                    <option value="0">normal</option>
-                    <option value="1">tidak normal</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="MCV">MCV:</label>
-                <select name="MCV" id="MCV" required>
-                    <option value="0">normal</option>
-                    <option value="1">tidak normal</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="SGOT">S G O T:</label>
-                <select name="SGOT" id="SGOT" required>
-                    <option value="0">normal</option>
-                    <option value="1">tidak normal</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="SGPT">S G P T:</label>
-                <select name="SGPT" id="SGPT" required>
-                    <option value="0">normal</option>
-                    <option value="1">tidak normal</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="BUN">B U N:</label>
-                <select name="BUN" id="BUN" required>
-                    <option value="0">normal</option>
-                    <option value="1">tidak normal</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="kreatinin">kreatinin:</label>
-                <select name="kreatinin" id="kreatinin" required>
-                    <option value="0">normal</option>
-                    <option value="1">tidak normal</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="asam_urat">asam urat:</label>
-                <select name="asam_urat" id="asam_urat" required>
-                    <option value="0">normal</option>
-                    <option value="1">tidak normal</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="kolestrol_total">kolestrol total:</label>
-                <select name="kolestrol_total" id="kolestrol_total" required>
-                    <option value="0">normal</option>
-                    <option value="1">tidak normal</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="trigliserida">trigliserida:</label>
-                <select name="trigliserida" id="trigliserida" required>
-                    <option value="0">normal</option>
-                    <option value="1">tidak normal</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="kolestrol_HDL_(direct)">kolestrol HDL (direct):</label>
-                <select name="kolestrol_HDL_(direct)" id="kolestrol_HDL_(direct)" required>
-                    <option value="0">normal</option>
-                    <option value="1">tidak normal</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="kolestrol_LDL_(direct)">kolestrol LDL (direct):</label>
-                <select name="kolestrol_LDL_(direct)" id="kolestrol_LDL_(direct)" required>
-                    <option value="0">normal</option>
-                    <option value="1">tidak normal</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="gula_darah_puasa">gula darah puasa:</label>
-                <select name="gula_darah_puasa" id="gula_darah_puasa" required>
-                    <option value="1">normal</option>
-                    <option value="2">tidak normal</option>
-                    <option value="0">diatas 200</option>
-                </select>
+    <div class="clinical-workstation">
+        <!-- 1. HOSPITAL / CLINICAL BRAND HEADER -->
+        <header class="hospital-header">
+            <div class="brand-section">
+                <div class="hospital-emblem">
+                    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 2v20M2 12h20"></path>
+                    </svg>
                 </div>
-            <div class="form-group">
-                 <label for="gula_darah_2_jam_pp">gula darah 2 jam pp:</label>
-                 <select name="gula_darah_2_jam_pp" id="gula_darah_2_jam_pp" required>
-                    <option value="1">normal</option>
-                    <option value="2">tidak normal</option>
-                    <option value="0">diatas 200</option>
-                </select>
-             </div>
-            <div class="form-group">
-                <label for="anti_HbBs">'Anti HBs':</label>
-                <select name="anti_HbBs" id="anti_HbBs" required>
-                    <option value="1">positif</option>
-                    <option value="0">negatif</option>
-                </select>
+                <div class="brand-meta">
+                    <h1>
+                        RS MEDIKA OCCUPATIONAL HEALTH CENTER (OHC)
+                        <span class="badge-accreditation">Akreditasi Paripurna K3</span>
+                    </h1>
+                    <p>Sistem Informasi & Sertifikasi Kebugaran Medis Kerja (Medical Fitness-for-Duty Assessment)</p>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="HBs_Ag_Kuantitatif">'HBs Ag Kuantitatif':</label>
-                <select name="HBs_Ag_Kuantitatif" id="HBs_Ag_Kuantitatif" required>
-                    <option value="0">negatif</option>
-                    <option value="1">positif</option>
-                </select>
+            <div class="header-controls">
+                <div class="system-status-indicator">
+                    <span class="status-dot-solid"></span> Sistem Diagnostik Siap
+                </div>
+                <button type="button" class="btn-header-action" onclick="window.print()" title="Cetak Rekam Medis">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="6 9 6 2 18 2 18 9"></polyline>
+                        <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+                        <rect x="6" y="14" width="12" height="8"></rect>
+                    </svg>
+                    <span>Cetak Lembar MCU</span>
+                </button>
             </div>
-            <div class="form-group">
-                <label for="pH_pada_urine">pH pada urine:</label>
-                <select name="pH_pada_urine" id="pH_pada_urine" required>
-                    <option value="0">normal</option>
-                    <option value="1">tidak normal</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="berat_jenis_pada_urine">berat jenis pada urine:</label>
-                <select name="berat_jenis_pada_urine" id="berat_jenis_pada_urine" required>
-                    <option value="0">normal</option>
-                    <option value="1">tidak normal</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="nitrite_pada_urine">nitrite pada urine:</label>
-                <select name="nitrite_pada_urine" id="nitrite_pada_urine" required>
-                    <option value="0">negatif</option>
-                    <option value="1">positif</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="protein_pada_urine">protein pada urine:</label>
-                <select name="protein_pada_urine" id="protein_pada_urine" required>
-                    <option value="0">negatif</option>
-                    <option value="1">positif</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="reduksi_pada_urine">reduksi pada urine:</label>
-                <select name="reduksi_pada_urine" id="reduksi_pada_urine" required>
-                    <option value="0">negatif</option>
-                    <option value="1">positif 1</option>
-                    <option value="2">positif 2</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="ketone_pada_urine">ketone pada urine:</label>
-                <select name="ketone_pada_urine" id="ketone_pada_urine" required>
-                    <option value="0">negatif</option>
-                    <option value="1">positif</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="urobilinogen_pada_urine">urobilinogen pada urine:</label>
-                <select name="urobilinogen_pada_urine" id="urobilinogen_pada_urine" required>
-                    <option value="0">negatif</option>
-                    <option value="1">positif</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="billirubin_pada_urine">billirubin pada urine:</label>
-                <select name="billirubin_pada_urine" id="billirubin_pada_urine" required>
-                    <option value="0">negatif</option>
-                    <option value="1">positif</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="eritrosit_pada_urine">eritrosit pada urine:</label>
-                <select name="eritrosit_pada_urine" id="eritrosit_pada_urine" required>
-                    <option value="0">normal</option>
-                    <option value="1">tidak normal</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="lekosit_pada_urine">lekosit pada urine:</label>
-                <select name="lekosit_pada_urine" id="lekosit_pada_urine" required>
-                    <option value="0">normal</option>
-                    <option value="1">tidak normal</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="silinder_pada_urine">silinder pada urine:</label>
-                <select name="silinder_pada_urine" id="silinder_pada_urine" required>
-                    <option value="0">negatif</option>
-                    <option value="1">positif</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="kristal_pada_urine">kristal pada urine:</label>
-                <select name="kristal_pada_urine" id="kristal_pada_urine" required>
-                    <option value="0">negatif</option>
-                    <option value="1">positif</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="yeast_pada_urine">yeast pada urine:</label>
-                <select name="yeast_pada_urine" id="yeast_pada_urine" required>
-                    <option value="0">negatif</option>
-                    <option value="1">positif</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="bakteri_pada_urine">bakteri pada urine:</label>
-                <select name="bakteri_pada_urine" id="bakteri_pada_urine" required>
-                    <option value="0">negatif</option>
-                    <option value="1">positif</option>
-                </select>
-            </div>
-            <!-- Submit Button -->
-            <button type="submit" class="btn">Predict</button>
-        </form>
+        </header>
 
-        {% if result %}
-        <div class="result">
-            <h2>Prediction Result</h2>
-            <p>{{ result }}</p>
-        </div>
-        {% endif %}
-        
+        <!-- 2. PATIENT DEMOGRAPHIC & EXAMINATION CONTEXT CARD -->
+        <section class="patient-profile-card" id="patient-profile-card">
+            <div class="demo-item">
+                <span class="demo-label">No. Rekam Medis / Registrasi</span>
+                <span class="demo-val code" id="p-id">{% if prediction and prediction.patient %}{{ prediction.patient.patient_id }}{% else %}MCU-2024-00891{% endif %}</span>
+            </div>
+            <div class="demo-item">
+                <span class="demo-label">Nama Karyawan / Peserta MCU</span>
+                <span class="demo-val" id="p-name">{% if prediction and prediction.patient %}{{ prediction.patient.patient_name }}{% else %}Budi Pratama, S.T.{% endif %}</span>
+            </div>
+            <div class="demo-item">
+                <span class="demo-label">Jenis Kelamin / Usia</span>
+                <span class="demo-val" id="p-gender-age">{% if prediction and prediction.patient %}{{ prediction.patient.gender_age }}{% else %}Laki-laki / 32 Tahun{% endif %}</span>
+            </div>
+            <div class="demo-item">
+                <span class="demo-label">Jabatan / Unit Kerja</span>
+                <span class="demo-val" id="p-position">{% if prediction and prediction.patient %}{{ prediction.patient.position }}{% else %}Teknisi Lapangan (Field Service Engineer){% endif %}</span>
+            </div>
+            <div class="demo-item">
+                <span class="demo-label">Perusahaan / Institusi</span>
+                <span class="demo-val" id="p-company">{% if prediction and prediction.patient %}{{ prediction.patient.company }}{% else %}PT Energi Nusantara Mandiri{% endif %}</span>
+            </div>
+            <div class="demo-item">
+                <span class="demo-label">Dokter Spesialis Okupasi (Sp.Ok)</span>
+                <span class="demo-val" id="p-doctor">{% if prediction and prediction.patient %}{{ prediction.patient.doctor }}{% else %}dr. H. Rian Pratama, Sp.Ok{% endif %}</span>
+            </div>
+        </section>
+
+        <!-- 3. CLINICAL CASE STUDIES TESTING WORKBENCH -->
+        <section class="simulator-section">
+            <div class="section-head-row">
+                <div class="section-title-wrap">
+                    <h2>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                            <line x1="8" y1="21" x2="16" y2="21"></line>
+                            <line x1="12" y1="17" x2="12" y2="21"></line>
+                        </svg>
+                        Simulasi Profil Rekam Medis Pasien (Studi Kasus Uji)
+                    </h2>
+                    <p>Pilih salah satu profil pasien riil di bawah untuk memuat 57 parameter laboratorium dan mensimulasikan hasil evaluasi kesehatan secara instan:</p>
+                </div>
+            </div>
+
+            <div class="case-grid">
+                <!-- Case 0: Fit to Work -->
+                <button type="button" class="case-card active" id="case-btn-0" onclick="selectCase(0)">
+                    <div class="case-badge-row">
+                        <span class="case-id">KASUS 01</span>
+                        <span class="case-tag fit">Lolos Penuh (Fit)</span>
+                    </div>
+                    <div class="case-name">Budi Pratama (Teknisi Lapangan)</div>
+                    <div class="case-role">32 Thn • PT Energi Nusantara Mandiri</div>
+                    <div class="case-desc">Tanda vital prima, laboratorium normal, spirometri & treadmill negatif. Kondisi fisik sehat prima tanpa hambatan tugas.</div>
+                </button>
+
+                <!-- Case 1: Fit with Note -->
+                <button type="button" class="case-card" id="case-btn-1" onclick="selectCase(1)">
+                    <div class="case-badge-row">
+                        <span class="case-id">KASUS 02</span>
+                        <span class="case-tag note">Catatan Medis</span>
+                    </div>
+                    <div class="case-name">Hendra Wijaya (Staf Logistik)</div>
+                    <div class="case-role">41 Thn • PT Logistik Samudera Jaya</div>
+                    <div class="case-desc">Pra-hipertensi ringan (135/85 mmHg), kolesterol batas atas. Bekerja normal dengan edukasi gizi dan kontrol berkala.</div>
+                </button>
+
+                <!-- Case 2: Fit with Restriction -->
+                <button type="button" class="case-card" id="case-btn-2" onclick="selectCase(2)">
+                    <div class="case-badge-row">
+                        <span class="case-id">KASUS 03</span>
+                        <span class="case-tag restrict">Pembatasan Tugas</span>
+                    </div>
+                    <div class="case-name">Joko Susilo (Operator Alat Berat)</div>
+                    <div class="case-role">48 Thn • PT Tambang Makmur Sejahtera</div>
+                    <div class="case-desc">Hipertensi tingkat 2, kapasitas vital paru terbatas (spirometri restriktif). Wajib penyesuaian beban kerja (Job Adjustment).</div>
+                </button>
+
+                <!-- Case 3: Unfit -->
+                <button type="button" class="case-card" id="case-btn-3" onclick="selectCase(3)">
+                    <div class="case-badge-row">
+                        <span class="case-id">KASUS 04</span>
+                        <span class="case-tag unfit">Tidak Lolos / Rujukan</span>
+                    </div>
+                    <div class="case-name">Surya Pratama (Pekerja Tambang)</div>
+                    <div class="case-role">45 Thn • PT Mineral Prima Abadi</div>
+                    <div class="case-desc">Uji treadmill iskemia abnormal, hepatitis aktif, gula darah tinggi. Berisiko tinggi, diistirahatkan & wajib dirujuk ke spesialis.</div>
+                </button>
+            </div>
+        </section>
+
+        <!-- 4. OFFICIAL MEDICAL FITNESS REPORT (SURAT KETERANGAN RESMI MCU) -->
+        <section class="medical-report-section" id="result-container" {% if not prediction %}style="display: none;"{% endif %}>
+            <div class="certificate-card {% if prediction %}{{ prediction.badge_class }}{% endif %}" id="cert-card">
+                <!-- Certificate Header -->
+                <div class="cert-header">
+                    <div class="cert-meta-left">
+                        <h3>SURAT KETERANGAN EVALUASI KESEHATAN KERJA (MEDICAL FITNESS CERTIFICATE)</h3>
+                        <div class="cert-reg-no">NO. DOKUMEN: <strong id="doc-ref-no">OHC-CERT/2024/XI-0891</strong> • KODE REGISTER K3: KEP-02/MEN/1980</div>
+                    </div>
+                    <div class="cert-badge-official">DOKUMEN RESMI K3</div>
+                </div>
+
+                <!-- Status Banner Main -->
+                <div class="status-banner-main">
+                    <div class="status-icon-circle" id="cert-icon-circle">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                        </svg>
+                    </div>
+                    <div class="status-headline">
+                        <span class="status-caption">STATUS HASIL PEMERIKSAAN KESEHATAN (MCU):</span>
+                        <div class="status-title-display" id="cert-status-display">
+                            {% if prediction %}{{ prediction.label }} — {{ prediction.indo_label }}{% endif %}
+                        </div>
+                        <div class="status-sub-title" id="cert-status-title">
+                            {% if prediction %}{{ prediction.title }}{% endif %}
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Detail Grid: Meaning, Clearance, Action -->
+                <div class="cert-detail-grid">
+                    <div class="detail-block">
+                        <span class="detail-label">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                            Arti & Makna Status Medis
+                        </span>
+                        <p class="detail-text" id="cert-meaning">
+                            {% if prediction %}{{ prediction.meaning }}{% endif %}
+                        </p>
+                    </div>
+
+                    <div class="detail-block">
+                        <span class="detail-label">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                            Izin Penempatan Kerja (Workplace Clearance)
+                        </span>
+                        <p class="detail-text" id="cert-clearance">
+                            {% if prediction %}{{ prediction.workplace_clearance }}{% endif %}
+                        </p>
+                    </div>
+
+                    <div class="detail-block">
+                        <span class="detail-label">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+                            Tindakan Medis & Rekomendasi HR/K3
+                        </span>
+                        <p class="detail-text" id="cert-recommendation">
+                            {% if prediction %}{{ prediction.recommendation }}{% endif %}
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Significant Clinical Findings Checklist Table -->
+                <div class="findings-wrapper">
+                    <div class="findings-header">
+                        <span class="findings-title">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                            Rekapitulasi Temuan Klinis & Hasil Uji Laboratorium yang Signifikan
+                        </span>
+                        <span style="font-size:0.72rem;color:var(--text-muted);">Diperbarui otomatis berdasarkan 57 parameter</span>
+                    </div>
+
+                    <table class="findings-table">
+                        <thead>
+                            <tr>
+                                <th>Kategori</th>
+                                <th>Parameter Pemeriksaan</th>
+                                <th>Hasil Pengujian Pasien</th>
+                                <th>Rentang Rujukan Standar</th>
+                                <th>Status Evaluasi</th>
+                            </tr>
+                        </thead>
+                        <tbody id="findings-table-body">
+                            {% if prediction and prediction.findings %}
+                                {% for f in prediction.findings %}
+                                <tr>
+                                    <td><strong>{{ f.category }}</strong></td>
+                                    <td>{{ f.param }}</td>
+                                    <td>{{ f.result }}</td>
+                                    <td>{{ f.normal }}</td>
+                                    <td><span class="severity-pill {{ f.severity }}">{{ f.severity }}</span></td>
+                                </tr>
+                                {% endfor %}
+                            {% else %}
+                                <tr>
+                                    <td><strong>Status Umum</strong></td>
+                                    <td>Evaluasi Seluruh Parameter Lab & Fisik</td>
+                                    <td>Seluruh parameter dalam batas normal rujukan medis</td>
+                                    <td>Sesuai Standar Klinis Kemenkes</td>
+                                    <td><span class="severity-pill normal">Normal</span></td>
+                                </tr>
+                            {% endif %}
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Certificate Footer -->
+                <div class="cert-footer-signature">
+                    <div>
+                        <div>Tanggal Pemeriksaan: <strong>1 November 2026</strong></div>
+                        <div style="font-size:0.68rem;color:var(--text-dim);margin-top:2px;">Terverifikasi secara digital oleh Komite Medis Occupational Health</div>
+                    </div>
+                    <div class="doctor-sign-block">
+                        <div class="doctor-name" id="cert-doctor-name">{% if prediction %}{{ prediction.patient.doctor }}{% else %}dr. H. Rian Pratama, Sp.Ok{% endif %}</div>
+                        <div class="doctor-sip">Dokter Spesialis Kedokteran Okupasi (IDI Sp.Ok)</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. 5-CATEGORY CLINICAL EXAMINATION TABS & DATA FORM -->
+        <main class="form-section-card">
+            <!-- Navigation Tabs -->
+            <div class="form-tabs-bar">
+                <button type="button" class="tab-btn active" data-tab="tab-vitals">
+                    <span class="tab-idx">1</span> Antropometri & Tanda Vital
+                </button>
+                <button type="button" class="tab-btn" data-tab="tab-history">
+                    <span class="tab-idx">2</span> Riwayat & Diagnostik Khusus
+                </button>
+                <button type="button" class="tab-btn" data-tab="tab-blood">
+                    <span class="tab-idx">3</span> Profil Hematologi Darah
+                </button>
+                <button type="button" class="tab-btn" data-tab="tab-chemistry">
+                    <span class="tab-idx">4</span> Kimia Darah & Fungsi Organ
+                </button>
+                <button type="button" class="tab-btn" data-tab="tab-urine">
+                    <span class="tab-idx">5</span> Urinalisis & Sedimen Urine
+                </button>
+                <button type="button" class="tab-btn" data-tab="all">
+                    Tampilkan Seluruh 57 Parameter
+                </button>
+            </div>
+
+            <div class="form-body-wrapper">
+                <form id="mcu-form" method="POST" action="/" class="clinical-form">
+                    
+                    <!-- TAB 1: Antropometri & Tanda Vital -->
+                    <div class="tab-pane active" id="tab-vitals">
+                        <div class="pane-intro">
+                            <h3>1. Antropometri, Fisik Umum & Tanda Vital</h3>
+                            <p>Evaluasi indeks massa tubuh (BMI), regulasi tekanan darah, frekuensi denyut nadi, laju respirasi, dan fungsi sensorik.</p>
+                        </div>
+                        <div class="clinical-grid">
+                            <div class="medical-field-card">
+                                <div class="field-label-row">
+                                    <label for="BMICat">Kategori BMI (Body Mass Index)</label>
+                                    <span class="field-category-tag">Fisik</span>
+                                </div>
+                                <select name="BMICat" id="BMICat" class="clinical-select" required>
+                                    <option value="0">Normal (18.5 - 24.9 kg/m²)</option>
+                                    <option value="1">Obesitas Tingkat I (25.0 - 29.9)</option>
+                                    <option value="2">Obesitas Tingkat II (≥ 30.0)</option>
+                                    <option value="3">Overweight / Berat Badan Lebih</option>
+                                    <option value="4">Underweight (< 18.5)</option>
+                                </select>
+                                <span class="clinical-reference-range">Nilai Rujukan: <strong>18.5 - 24.9 kg/m²</strong></span>
+                            </div>
+
+                            <div class="medical-field-card">
+                                <div class="field-label-row">
+                                    <label for="Hipertensi_Kategori">Kategori Tekanan Darah</label>
+                                    <span class="field-category-tag">Vital</span>
+                                </div>
+                                <select name="Hipertensi_Kategori" id="Hipertensi_Kategori" class="clinical-select" required>
+                                    <option value="2">Normal (< 120/80 mmHg)</option>
+                                    <option value="3">Pra-hipertensi (120-139 / 80-89 mmHg)</option>
+                                    <option value="0">Hipertensi Tingkat 1 (140-159 / 90-99 mmHg)</option>
+                                    <option value="1">Hipertensi Tingkat 2 (≥ 160 / ≥ 100 mmHg)</option>
+                                </select>
+                                <span class="clinical-reference-range">Pedoman Klinis: <strong>JNC-7 Normal: < 120/80 mmHg</strong></span>
+                            </div>
+
+                            <div class="medical-field-card">
+                                <div class="field-label-row">
+                                    <label for="Nadi_kali_menit">Frekuensi Denyut Nadi</label>
+                                    <span class="field-category-tag">Vital</span>
+                                </div>
+                                <select name="Nadi(kali/menit)" id="Nadi_kali_menit" class="clinical-select" required>
+                                    <option value="0">Normal (60 - 100 kali/menit)</option>
+                                    <option value="1">Abnormal / Takikardia (> 100) / Bradikardia (< 60)</option>
+                                </select>
+                                <span class="clinical-reference-range">Nilai Rujukan: <strong>60 - 100 bpm teratur</strong></span>
+                            </div>
+
+                            <div class="medical-field-card">
+                                <div class="field-label-row">
+                                    <label for="FrekuensiNapas_kali_menit">Frekuensi Laju Pernapasan</label>
+                                    <span class="field-category-tag">Vital</span>
+                                </div>
+                                <select name="FrekuensiNapas(kali/menit)" id="FrekuensiNapas_kali_menit" class="clinical-select" required>
+                                    <option value="0">Normal (12 - 20 kali/menit)</option>
+                                    <option value="1">Takipnea / Dispnea (> 20 kali/menit)</option>
+                                </select>
+                                <span class="clinical-reference-range">Nilai Rujukan: <strong>12 - 20 napas/menit saat istirahat</strong></span>
+                            </div>
+
+                            <div class="medical-field-card">
+                                <div class="field-label-row">
+                                    <label for="Tingkatan_Kesadaran">Tingkat Kesadaran (GCS)</label>
+                                    <span class="field-category-tag">Neurologi</span>
+                                </div>
+                                <select name="Tingkatan_Kesadaran" id="Tingkatan_Kesadaran" class="clinical-select" required>
+                                    <option value="1">Compos Mentis (Sadar Penuh, GCS 15)</option>
+                                    <option value="0">Apatis / Somnolen / Menurun (< 15)</option>
+                                </select>
+                                <span class="clinical-reference-range">Standar Evaluasi: <strong>Wajib Compos Mentis (GCS 15)</strong></span>
+                            </div>
+
+                            <div class="medical-field-card">
+                                <div class="field-label-row">
+                                    <label for="Buta_Warna">Pemeriksaan Persepsi Warna</label>
+                                    <span class="field-category-tag">Mata</span>
+                                </div>
+                                <select name="Buta_Warna" id="Buta_Warna" class="clinical-select" required>
+                                    <option value="0">Normal (Tidak Buta Warna)</option>
+                                    <option value="1">Buta Warna Parsial / Total</option>
+                                </select>
+                                <span class="clinical-reference-range">Metode Pengujian: <strong>Buku Ishihara 14/24 Plates</strong></span>
+                            </div>
+
+                            <div class="medical-field-card">
+                                <div class="field-label-row">
+                                    <label for="Jantung">Auskultasi Suara Jantung</label>
+                                    <span class="field-category-tag">Fisik</span>
+                                </div>
+                                <select name="Jantung" id="Jantung" class="clinical-select" required>
+                                    <option value="0">Normal (Bunyi Jantung I & II Murni, Tanpa Bising)</option>
+                                    <option value="1">Abnormal (Ditemukan Murmur / Gallop / Aritmia)</option>
+                                </select>
+                                <span class="clinical-reference-range">Pemeriksaan: <strong>Stetoskop Prekordial</strong></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- TAB 2: Riwayat & Diagnostik Khusus -->
+                    <div class="tab-pane" id="tab-history">
+                        <div class="pane-intro">
+                            <h3>2. Riwayat Penyakit & Uji Diagnostik Penunjang</h3>
+                            <p>Skrining riwayat patologis serta uji kapasitas organ vital (Rontgen Thorax, Spirometri, Treadmill, dan Audiometri).</p>
+                        </div>
+                        <div class="clinical-grid">
+                            <div class="medical-field-card">
+                                <div class="field-label-row">
+                                    <label for="tuberkulosis">Tuberkulosis Paru (TB)</label>
+                                    <span class="field-category-tag">Riwayat</span>
+                                </div>
+                                <select name="tuberkulosis" id="tuberkulosis" class="clinical-select" required>
+                                    <option value="1">Tidak Ada Riwayat TB</option>
+                                    <option value="0">Ada Riwayat / Kasus Aktif TB</option>
+                                </select>
+                                <span class="clinical-reference-range">Target Klinis: <strong>Bebas TB Paru Aktif</strong></span>
+                            </div>
+
+                            <div class="medical-field-card">
+                                <div class="field-label-row">
+                                    <label for="penyakit_jantung">Riwayat Penyakit Jantung</label>
+                                    <span class="field-category-tag">Riwayat</span>
+                                </div>
+                                <select name="penyakit_jantung" id="penyakit_jantung" class="clinical-select" required>
+                                    <option value="1">Tidak Ada Riwayat Penyakit Jantung</option>
+                                    <option value="0">Ada Riwayat Penyakit Jantung</option>
+                                </select>
+                                <span class="clinical-reference-range">Target Klinis: <strong>Bebas Riwayat PJK / Gagal Jantung</strong></span>
+                            </div>
+
+                            <div class="medical-field-card">
+                                <div class="field-label-row">
+                                    <label for="hipertensi">Riwayat Hipertensi Kronis</label>
+                                    <span class="field-category-tag">Riwayat</span>
+                                </div>
+                                <select name="hipertensi" id="hipertensi" class="clinical-select" required>
+                                    <option value="1">Tidak Ada Riwayat Hipertensi</option>
+                                    <option value="0">Ada Riwayat Hipertensi</option>
+                                </select>
+                                <span class="clinical-reference-range">Evaluasi: <strong>Tekanan Darah Terkontrol</strong></span>
+                            </div>
+
+                            <div class="medical-field-card">
+                                <div class="field-label-row">
+                                    <label for="diabetes_melitus">Riwayat Diabetes Melitus (DM)</label>
+                                    <span class="field-category-tag">Riwayat</span>
+                                </div>
+                                <select name="diabetes_melitus" id="diabetes_melitus" class="clinical-select" required>
+                                    <option value="1">Tidak Ada Riwayat DM</option>
+                                    <option value="0">Ada Riwayat Diabetes Melitus</option>
+                                </select>
+                                <span class="clinical-reference-range">Evaluasi: <strong>Glukosa Darah Terkendali</strong></span>
+                            </div>
+
+                            <div class="medical-field-card">
+                                <div class="field-label-row">
+                                    <label for="gangguan_jiwa">Riwayat Gangguan Kejiwaan</label>
+                                    <span class="field-category-tag">Riwayat</span>
+                                </div>
+                                <select name="gangguan_jiwa" id="gangguan_jiwa" class="clinical-select" required>
+                                    <option value="1">Tidak Ada Riwayat</option>
+                                    <option value="0">Ada Riwayat Gangguan Jiwa</option>
+                                </select>
+                                <span class="clinical-reference-range">Standar: <strong>Sehat Mental untuk Tugas Operasional</strong></span>
+                            </div>
+
+                            <div class="medical-field-card">
+                                <div class="field-label-row">
+                                    <label for="trauma_pada_kepala">Riwayat Trauma Kepala</label>
+                                    <span class="field-category-tag">Riwayat</span>
+                                </div>
+                                <select name="trauma_pada_kepala" id="trauma_pada_kepala" class="clinical-select" required>
+                                    <option value="1">Tidak Ada Trauma Kepala</option>
+                                    <option value="0">Ada Riwayat Cedera Kepala Signifikan</option>
+                                </select>
+                                <span class="clinical-reference-range">Evaluasi: <strong>Fungsi Neurologis Utuh</strong></span>
+                            </div>
+
+                            <div class="medical-field-card">
+                                <div class="field-label-row">
+                                    <label for="hepatitis">Riwayat Hepatitis</label>
+                                    <span class="field-category-tag">Riwayat</span>
+                                </div>
+                                <select name="hepatitis" id="hepatitis" class="clinical-select" required>
+                                    <option value="1">Tidak Ada Riwayat Hepatitis</option>
+                                    <option value="0">Ada Riwayat / Reaktif Hepatitis</option>
+                                </select>
+                                <span class="clinical-reference-range">Target Klinis: <strong>Non-Reaktif HBsAg</strong></span>
+                            </div>
+
+                            <div class="medical-field-card">
+                                <div class="field-label-row">
+                                    <label for="Spirometri">Uji Fungsi Paru (Spirometri)</label>
+                                    <span class="field-category-tag">Uji Paru</span>
+                                </div>
+                                <select name="Spirometri" id="Spirometri" class="clinical-select" required>
+                                    <option value="0">Normal (FVC & FEV1 ≥ 80%)</option>
+                                    <option value="1">Abnormal (Restriktif / Obstruktif)</option>
+                                </select>
+                                <span class="clinical-reference-range">Standar K3: <strong>Kapasitas Vital Paru ≥ 80%</strong></span>
+                            </div>
+
+                            <div class="medical-field-card">
+                                <div class="field-label-row">
+                                    <label for="Treadmil">Uji Latih Jantung Beban (Treadmill)</label>
+                                    <span class="field-category-tag">Uji Jantung</span>
+                                </div>
+                                <select name="Treadmil" id="Treadmil" class="clinical-select" required>
+                                    <option value="0">Negatif / Normal (Tanpa Iskemia)</option>
+                                    <option value="1">Positif Abnormal (Indikasi Iskemia Miokard)</option>
+                                </select>
+                                <span class="clinical-reference-range">Pedoman: <strong>Bruce Protocol Toleransi Normal</strong></span>
+                            </div>
+
+                            <div class="medical-field-card">
+                                <div class="field-label-row">
+                                    <label for="Audiometri">Pemeriksaan Pendengaran (Audiometri)</label>
+                                    <span class="field-category-tag">Sensorik</span>
+                                </div>
+                                <select name="Audiometri" id="Audiometri" class="clinical-select" required>
+                                    <option value="0">Normal (Ambang Dengar ≤ 25 dB)</option>
+                                    <option value="1">Tuli Konduktif / Sensorineural (NIHL)</option>
+                                </select>
+                                <span class="clinical-reference-range">Standar K3: <strong>Ambang Dengar ≤ 25 dB HL</strong></span>
+                            </div>
+
+                            <div class="medical-field-card">
+                                <div class="field-label-row">
+                                    <label for="foto_thorax">Radiologi Rontgen Thorax (Dada)</label>
+                                    <span class="field-category-tag">Radiologi</span>
+                                </div>
+                                <select name="foto_thorax" id="foto_thorax" class="clinical-select" required>
+                                    <option value="0">Normal (Cor & Pulmo dalam batas normal)</option>
+                                    <option value="1">Abnormal (Kardiomegali / Infiltrat / Lesi)</option>
+                                </select>
+                                <span class="clinical-reference-range">Hasil: <strong>Cor Pulmo Tak Tampak Kelainan</strong></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- TAB 3: Profil Hematologi Darah -->
+                    <div class="tab-pane" id="tab-blood">
+                        <div class="pane-intro">
+                            <h3>3. Profil Hematologi Darah Lengkap</h3>
+                            <p>Pemeriksaan seluler darah untuk mendeteksi anemia, respons imun, infeksi bakteri/virus, dan profil trombosit.</p>
+                        </div>
+                        <div class="clinical-grid">
+                            <div class="medical-field-card">
+                                <div class="field-label-row">
+                                    <label for="hemoglobin">Kadar Hemoglobin (Hb)</label>
+                                    <span class="field-category-tag">Darah</span>
+                                </div>
+                                <select name="hemoglobin" id="hemoglobin" class="clinical-select" required>
+                                    <option value="0">Normal (13.0 - 17.5 g/dL)</option>
+                                    <option value="1">Abnormal / Anemia (< 13.0 atau > 17.5)</option>
+                                </select>
+                                <span class="clinical-reference-range">Nilai Rujukan: <strong>Pria: 13.0-17.5, Wanita: 12.0-15.5 g/dL</strong></span>
+                            </div>
+
+                            <div class="medical-field-card">
+                                <div class="field-label-row">
+                                    <label for="leukosit">Hitung Jumlah Leukosit (WBC)</label>
+                                    <span class="field-category-tag">Darah</span>
+                                </div>
+                                <select name="leukosit" id="leukosit" class="clinical-select" required>
+                                    <option value="0">Normal (4.000 - 10.000 /µL)</option>
+                                    <option value="1">Leukositosis (> 10.000) / Leukopenia (< 4.000)</option>
+                                </select>
+                                <span class="clinical-reference-range">Nilai Rujukan: <strong>4.000 - 10.000 sel/µL</strong></span>
+                            </div>
+
+                            <div class="medical-field-card">
+                                <div class="field-label-row">
+                                    <label for="eritrosit">Hitung Sel Darah Merah (Eritrosit)</label>
+                                    <span class="field-category-tag">Darah</span>
+                                </div>
+                                <select name="eritrosit" id="eritrosit" class="clinical-select" required>
+                                    <option value="0">Normal (4.5 - 5.9 juta/µL)</option>
+                                    <option value="1">Abnormal / Di Luar Rentang</option>
+                                </select>
+                                <span class="clinical-reference-range">Nilai Rujukan: <strong>4.5 - 5.9 x 10^6 /µL</strong></span>
+                            </div>
+
+                            <div class="medical-field-card">
+                                <div class="field-label-row">
+                                    <label for="LED">Laju Endap Darah (LED / ESR)</label>
+                                    <span class="field-category-tag">Darah</span>
+                                </div>
+                                <select name="LED" id="LED" class="clinical-select" required>
+                                    <option value="0">Normal (0 - 15 mm/jam)</option>
+                                    <option value="1">Meningkat (> 15 mm/jam)</option>
+                                </select>
+                                <span class="clinical-reference-range">Nilai Rujukan: <strong>< 15 mm/jam (Pria)</strong></span>
+                            </div>
+
+                            <div class="medical-field-card">
+                                <div class="field-label-row">
+                                    <label for="eosinofil">Hitung Eosinofil</label>
+                                    <span class="field-category-tag">Hitung Jenis</span>
+                                </div>
+                                <select name="eosinofil" id="eosinofil" class="clinical-select" required>
+                                    <option value="0">Normal (1 - 3 %)</option>
+                                    <option value="1">Eosinofilia (> 3 %)</option>
+                                </select>
+                                <span class="clinical-reference-range">Nilai Rujukan: <strong>1 - 3 %</strong></span>
+                            </div>
+
+                            <div class="medical-field-card">
+                                <div class="field-label-row">
+                                    <label for="basofil">Hitung Basofil</label>
+                                    <span class="field-category-tag">Hitung Jenis</span>
+                                </div>
+                                <select name="basofil" id="basofil" class="clinical-select" required>
+                                    <option value="0">Normal (0 - 1 %)</option>
+                                    <option value="1">Basofilia (> 1 %)</option>
+                                </select>
+                                <span class="clinical-reference-range">Nilai Rujukan: <strong>0 - 1 %</strong></span>
+                            </div>
+
+                            <div class="medical-field-card">
+                                <div class="field-label-row">
+                                    <label for="neutrofil">Hitung Neutrofil</label>
+                                    <span class="field-category-tag">Hitung Jenis</span>
+                                </div>
+                                <select name="neutrofil" id="neutrofil" class="clinical-select" required>
+                                    <option value="0">Normal (50 - 70 %)</option>
+                                    <option value="1">Abnormal / Neutrofilia</option>
+                                </select>
+                                <span class="clinical-reference-range">Nilai Rujukan: <strong>50 - 70 %</strong></span>
+                            </div>
+
+                            <div class="medical-field-card">
+                                <div class="field-label-row">
+                                    <label for="lymphosit">Hitung Limfosit</label>
+                                    <span class="field-category-tag">Hitung Jenis</span>
+                                </div>
+                                <select name="lymphosit" id="lymphosit" class="clinical-select" required>
+                                    <option value="0">Normal (20 - 40 %)</option>
+                                    <option value="1">Abnormal / Limfositosis</option>
+                                </select>
+                                <span class="clinical-reference-range">Nilai Rujukan: <strong>20 - 40 %</strong></span>
+                            </div>
+
+                            <div class="medical-field-card">
+                                <div class="field-label-row">
+                                    <label for="monosit">Hitung Monosit</label>
+                                    <span class="field-category-tag">Hitung Jenis</span>
+                                </div>
+                                <select name="monosit" id="monosit" class="clinical-select" required>
+                                    <option value="0">Normal (2 - 8 %)</option>
+                                    <option value="1">Monositosis (> 8 %)</option>
+                                </select>
+                                <span class="clinical-reference-range">Nilai Rujukan: <strong>2 - 8 %</strong></span>
+                            </div>
+
+                            <div class="medical-field-card">
+                                <div class="field-label-row">
+                                    <label for="trombosit">Hitung Trombosit (Platelet)</label>
+                                    <span class="field-category-tag">Darah</span>
+                                </div>
+                                <select name="trombosit" id="trombosit" class="clinical-select" required>
+                                    <option value="0">Normal (150.000 - 450.000 /µL)</option>
+                                    <option value="1">Trombositopenia (< 150k) / Trombositosis</option>
+                                </select>
+                                <span class="clinical-reference-range">Nilai Rujukan: <strong>150.000 - 450.000 sel/µL</strong></span>
+                            </div>
+
+                            <div class="medical-field-card">
+                                <div class="field-label-row">
+                                    <label for="hematokrit">Kadar Hematokrit (Ht)</label>
+                                    <span class="field-category-tag">Darah</span>
+                                </div>
+                                <select name="hematokrit" id="hematokrit" class="clinical-select" required>
+                                    <option value="0">Normal (40 - 52 %)</option>
+                                    <option value="1">Abnormal (< 40% atau > 52%)</option>
+                                </select>
+                                <span class="clinical-reference-range">Nilai Rujukan: <strong>40 - 52 % (Pria)</strong></span>
+                            </div>
+
+                            <div class="medical-field-card">
+                                <div class="field-label-row">
+                                    <label for="MCV">Mean Corpuscular Volume (MCV)</label>
+                                    <span class="field-category-tag">Darah</span>
+                                </div>
+                                <select name="MCV" id="MCV" class="clinical-select" required>
+                                    <option value="0">Normal (80 - 100 fL)</option>
+                                    <option value="1">Mikrositik (< 80) / Makrositik (> 100)</option>
+                                </select>
+                                <span class="clinical-reference-range">Nilai Rujukan: <strong>80 - 100 fL</strong></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- TAB 4: Kimia Darah & Fungsi Organ -->
+                    <div class="tab-pane" id="tab-chemistry">
+                        <div class="pane-intro">
+                            <h3>4. Kimia Darah, Fungsi Organ & Profil Metabolik</h3>
+                            <p>Evaluasi fungsi hati (SGOT/SGPT), fungsi ginjal (BUN/Kreatinin), asam urat, profil lipid kardiovaskular, dan glukosa darah.</p>
+                        </div>
+                        <div class="clinical-grid">
+                            <div class="medical-field-card">
+                                <div class="field-label-row">
+                                    <label for="SGOT">Enzim Hati SGOT (AST)</label>
+                                    <span class="field-category-tag">Fungsi Hati</span>
+                                </div>
+                                <select name="SGOT" id="SGOT" class="clinical-select" required>
+                                    <option value="0">Normal (< 35 U/L)</option>
+                                    <option value="1">Meningkat (≥ 35 U/L)</option>
+                                </select>
+                                <span class="clinical-reference-range">Nilai Rujukan: <strong>< 35 U/L (Pria)</strong></span>
+                            </div>
+
+                            <div class="medical-field-card">
+                                <div class="field-label-row">
+                                    <label for="SGPT">Enzim Hati SGPT (ALT)</label>
+                                    <span class="field-category-tag">Fungsi Hati</span>
+                                </div>
+                                <select name="SGPT" id="SGPT" class="clinical-select" required>
+                                    <option value="0">Normal (< 45 U/L)</option>
+                                    <option value="1">Meningkat (≥ 45 U/L)</option>
+                                </select>
+                                <span class="clinical-reference-range">Nilai Rujukan: <strong>< 45 U/L (Pria)</strong></span>
+                            </div>
+
+                            <div class="medical-field-card">
+                                <div class="field-label-row">
+                                    <label for="BUN">Blood Urea Nitrogen (BUN)</label>
+                                    <span class="field-category-tag">Fungsi Ginjal</span>
+                                </div>
+                                <select name="BUN" id="BUN" class="clinical-select" required>
+                                    <option value="0">Normal (7 - 20 mg/dL)</option>
+                                    <option value="1">Meningkat (> 20 mg/dL)</option>
+                                </select>
+                                <span class="clinical-reference-range">Nilai Rujukan: <strong>7 - 20 mg/dL</strong></span>
+                            </div>
+
+                            <div class="medical-field-card">
+                                <div class="field-label-row">
+                                    <label for="kreatinin">Kreatinin Serum</label>
+                                    <span class="field-category-tag">Fungsi Ginjal</span>
+                                </div>
+                                <select name="kreatinin" id="kreatinin" class="clinical-select" required>
+                                    <option value="0">Normal (0.7 - 1.3 mg/dL)</option>
+                                    <option value="1">Meningkat (> 1.3 mg/dL)</option>
+                                </select>
+                                <span class="clinical-reference-range">Nilai Rujukan: <strong>0.7 - 1.3 mg/dL</strong></span>
+                            </div>
+
+                            <div class="medical-field-card">
+                                <div class="field-label-row">
+                                    <label for="asam_urat">Asam Urat Serum (Uric Acid)</label>
+                                    <span class="field-category-tag">Metabolik</span>
+                                </div>
+                                <select name="asam_urat" id="asam_urat" class="clinical-select" required>
+                                    <option value="0">Normal (3.5 - 7.2 mg/dL)</option>
+                                    <option value="1">Hiperurisemia (> 7.2 mg/dL)</option>
+                                </select>
+                                <span class="clinical-reference-range">Nilai Rujukan: <strong>3.5 - 7.2 mg/dL (Pria)</strong></span>
+                            </div>
+
+                            <div class="medical-field-card">
+                                <div class="field-label-row">
+                                    <label for="kolestrol_total">Kolesterol Total</label>
+                                    <span class="field-category-tag">Profil Lipid</span>
+                                </div>
+                                <select name="kolestrol_total" id="kolestrol_total" class="clinical-select" required>
+                                    <option value="0">Normal (< 200 mg/dL)</option>
+                                    <option value="1">Dislipidemia / Tinggi (≥ 200 mg/dL)</option>
+                                </select>
+                                <span class="clinical-reference-range">Target NCEP ATP III: <strong>< 200 mg/dL</strong></span>
+                            </div>
+
+                            <div class="medical-field-card">
+                                <div class="field-label-row">
+                                    <label for="trigliserida">Trigliserida Serum</label>
+                                    <span class="field-category-tag">Profil Lipid</span>
+                                </div>
+                                <select name="trigliserida" id="trigliserida" class="clinical-select" required>
+                                    <option value="0">Normal (< 150 mg/dL)</option>
+                                    <option value="1">Meningkat (≥ 150 mg/dL)</option>
+                                </select>
+                                <span class="clinical-reference-range">Nilai Rujukan: <strong>< 150 mg/dL</strong></span>
+                            </div>
+
+                            <div class="medical-field-card">
+                                <div class="field-label-row">
+                                    <label for="kolestrol_HDL_direct">Kolesterol HDL (Kolesterol Baik)</label>
+                                    <span class="field-category-tag">Profil Lipid</span>
+                                </div>
+                                <select name="kolestrol_HDL_(direct)" id="kolestrol_HDL_direct" class="clinical-select" required>
+                                    <option value="0">Normal (≥ 40 mg/dL)</option>
+                                    <option value="1">Rendah (< 40 mg/dL)</option>
+                                </select>
+                                <span class="clinical-reference-range">Nilai Rujukan: <strong>≥ 40 mg/dL</strong></span>
+                            </div>
+
+                            <div class="medical-field-card">
+                                <div class="field-label-row">
+                                    <label for="kolestrol_LDL_direct">Kolesterol LDL (Kolesterol Jahat)</label>
+                                    <span class="field-category-tag">Profil Lipid</span>
+                                </div>
+                                <select name="kolestrol_LDL_(direct)" id="kolestrol_LDL_direct" class="clinical-select" required>
+                                    <option value="0">Optimal (< 100 mg/dL)</option>
+                                    <option value="1">Batas Tinggi / Tinggi (≥ 100 mg/dL)</option>
+                                </select>
+                                <span class="clinical-reference-range">Nilai Rujukan: <strong>< 100 mg/dL Optimal</strong></span>
+                            </div>
+
+                            <div class="medical-field-card">
+                                <div class="field-label-row">
+                                    <label for="gula_darah_puasa">Gula Darah Puasa (GDP)</label>
+                                    <span class="field-category-tag">Glikemik</span>
+                                </div>
+                                <select name="gula_darah_puasa" id="gula_darah_puasa" class="clinical-select" required>
+                                    <option value="1">Normal (70 - 100 mg/dL)</option>
+                                    <option value="0">Terganggu / Diabetes (> 125 mg/dL)</option>
+                                </select>
+                                <span class="clinical-reference-range">Kriteria PERKENI: <strong>70 - 100 mg/dL Normal</strong></span>
+                            </div>
+
+                            <div class="medical-field-card">
+                                <div class="field-label-row">
+                                    <label for="gula_darah_2_jam_pp">Gula Darah 2 Jam Post-Prandial</label>
+                                    <span class="field-category-tag">Glikemik</span>
+                                </div>
+                                <select name="gula_darah_2_jam_pp" id="gula_darah_2_jam_pp" class="clinical-select" required>
+                                    <option value="1">Normal (< 140 mg/dL)</option>
+                                    <option value="0">Intoleransi Glukosa / Diabetes (≥ 140 mg/dL)</option>
+                                </select>
+                                <span class="clinical-reference-range">Kriteria PERKENI: <strong>< 140 mg/dL Normal</strong></span>
+                            </div>
+
+                            <div class="medical-field-card">
+                                <div class="field-label-row">
+                                    <label for="anti_HbBs">Titer Antibodi Anti-HBs</label>
+                                    <span class="field-category-tag">Imunologi</span>
+                                </div>
+                                <select name="anti_HbBs" id="anti_HbBs" class="clinical-select" required>
+                                    <option value="1">Positif / Memiliki Antibodi Protektif</option>
+                                    <option value="0">Negatif / Belum Terproteksi</option>
+                                </select>
+                                <span class="clinical-reference-range">Target K3: <strong>Memiliki Proteksi Hepatitis B</strong></span>
+                            </div>
+
+                            <div class="medical-field-card">
+                                <div class="field-label-row">
+                                    <label for="HBs_Ag_Kuantitatif">Antigen Hepatitis B (HBsAg Kuantitatif)</label>
+                                    <span class="field-category-tag">Serologi</span>
+                                </div>
+                                <select name="HBs_Ag_Kuantitatif" id="HBs_Ag_Kuantitatif" class="clinical-select" required>
+                                    <option value="0">Non-Reaktif / Negatif</option>
+                                    <option value="1">Reaktif / Positif Infeksi Aktif</option>
+                                </select>
+                                <span class="clinical-reference-range">Standar: <strong>Wajib Non-Reaktif</strong></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- TAB 5: Urinalisis & Sedimen Urine -->
+                    <div class="tab-pane" id="tab-urine">
+                        <div class="pane-intro">
+                            <h3>5. Urinalisis Lengkap & Sedimen Mikroskopis</h3>
+                            <p>Evaluasi fungsi ekskresi ginjal, deteksi dini proteinuria, glukosuria, hematuria, infeksi saluran kemih (ISK), dan kristaluria.</p>
+                        </div>
+                        <div class="clinical-grid">
+                            <div class="medical-field-card">
+                                <div class="field-label-row">
+                                    <label for="pH_pada_urine">Keasaman Urine (pH)</label>
+                                    <span class="field-category-tag">Fisika Urine</span>
+                                </div>
+                                <select name="pH_pada_urine" id="pH_pada_urine" class="clinical-select" required>
+                                    <option value="0">Normal (4.6 - 8.0)</option>
+                                    <option value="1">Asidosis / Alkalosis Ekstrem</option>
+                                </select>
+                                <span class="clinical-reference-range">Nilai Rujukan: <strong>pH 5.0 - 7.5</strong></span>
+                            </div>
+
+                            <div class="medical-field-card">
+                                <div class="field-label-row">
+                                    <label for="berat_jenis_pada_urine">Berat Jenis Urine (Specific Gravity)</label>
+                                    <span class="field-category-tag">Fisika Urine</span>
+                                </div>
+                                <select name="berat_jenis_pada_urine" id="berat_jenis_pada_urine" class="clinical-select" required>
+                                    <option value="0">Normal (1.005 - 1.030)</option>
+                                    <option value="1">Hipostenuria (< 1.005) / Hiperstenuria</option>
+                                </select>
+                                <span class="clinical-reference-range">Nilai Rujukan: <strong>1.010 - 1.025</strong></span>
+                            </div>
+
+                            <div class="medical-field-card">
+                                <div class="field-label-row">
+                                    <label for="nitrite_pada_urine">Nitrit Urine (Bakteriuria)</label>
+                                    <span class="field-category-tag">Kimia Urine</span>
+                                </div>
+                                <select name="nitrite_pada_urine" id="nitrite_pada_urine" class="clinical-select" required>
+                                    <option value="0">Negatif (Normal)</option>
+                                    <option value="1">Positif (Indikasi Infeksi Bakteri Gram Negatif)</option>
+                                </select>
+                                <span class="clinical-reference-range">Nilai Rujukan: <strong>Negatif</strong></span>
+                            </div>
+
+                            <div class="medical-field-card">
+                                <div class="field-label-row">
+                                    <label for="protein_pada_urine">Protein Urine (Albuminuria)</label>
+                                    <span class="field-category-tag">Kimia Urine</span>
+                                </div>
+                                <select name="protein_pada_urine" id="protein_pada_urine" class="clinical-select" required>
+                                    <option value="0">Negatif (Normal)</option>
+                                    <option value="1">Positif (+1 s/d +3, Indikasi Nefropati)</option>
+                                </select>
+                                <span class="clinical-reference-range">Nilai Rujukan: <strong>Negatif</strong></span>
+                            </div>
+
+                            <div class="medical-field-card">
+                                <div class="field-label-row">
+                                    <label for="reduksi_pada_urine">Reduksi Glukosa Urine</label>
+                                    <span class="field-category-tag">Kimia Urine</span>
+                                </div>
+                                <select name="reduksi_pada_urine" id="reduksi_pada_urine" class="clinical-select" required>
+                                    <option value="0">Negatif (Normal)</option>
+                                    <option value="1">Positif (Glukosuria)</option>
+                                </select>
+                                <span class="clinical-reference-range">Nilai Rujukan: <strong>Negatif</strong></span>
+                            </div>
+
+                            <div class="medical-field-card">
+                                <div class="field-label-row">
+                                    <label for="ketone_pada_urine">Keton Urine</label>
+                                    <span class="field-category-tag">Kimia Urine</span>
+                                </div>
+                                <select name="ketone_pada_urine" id="ketone_pada_urine" class="clinical-select" required>
+                                    <option value="0">Negatif (Normal)</option>
+                                    <option value="1">Positif (Ketonuria / Dehidrasi)</option>
+                                </select>
+                                <span class="clinical-reference-range">Nilai Rujukan: <strong>Negatif</strong></span>
+                            </div>
+
+                            <div class="medical-field-card">
+                                <div class="field-label-row">
+                                    <label for="urobilinogen_pada_urine">Urobilinogen Urine</label>
+                                    <span class="field-category-tag">Kimia Urine</span>
+                                </div>
+                                <select name="urobilinogen_pada_urine" id="urobilinogen_pada_urine" class="clinical-select" required>
+                                    <option value="0">Normal (0.2 - 1.0 mg/dL)</option>
+                                    <option value="1">Meningkat (> 1.0 mg/dL)</option>
+                                </select>
+                                <span class="clinical-reference-range">Nilai Rujukan: <strong>Normal</strong></span>
+                            </div>
+
+                            <div class="medical-field-card">
+                                <div class="field-label-row">
+                                    <label for="billirubin_pada_urine">Bilirubin Urine</label>
+                                    <span class="field-category-tag">Kimia Urine</span>
+                                </div>
+                                <select name="billirubin_pada_urine" id="billirubin_pada_urine" class="clinical-select" required>
+                                    <option value="0">Negatif (Normal)</option>
+                                    <option value="1">Positif (Bilirubinuria / Gangguan Empedu)</option>
+                                </select>
+                                <span class="clinical-reference-range">Nilai Rujukan: <strong>Negatif</strong></span>
+                            </div>
+
+                            <div class="medical-field-card">
+                                <div class="field-label-row">
+                                    <label for="eritrosit_pada_urine">Eritrosit Sedimen Urine</label>
+                                    <span class="field-category-tag">Sedimen</span>
+                                </div>
+                                <select name="eritrosit_pada_urine" id="eritrosit_pada_urine" class="clinical-select" required>
+                                    <option value="0">Normal (0 - 2 /LPB)</option>
+                                    <option value="1">Hematuria Mikroskopis (> 2 /LPB)</option>
+                                </select>
+                                <span class="clinical-reference-range">Nilai Rujukan: <strong>0 - 2 sel / LPB</strong></span>
+                            </div>
+
+                            <div class="medical-field-card">
+                                <div class="field-label-row">
+                                    <label for="lekosit_pada_urine">Leukosit Sedimen Urine</label>
+                                    <span class="field-category-tag">Sedimen</span>
+                                </div>
+                                <select name="lekosit_pada_urine" id="lekosit_pada_urine" class="clinical-select" required>
+                                    <option value="0">Normal (0 - 5 /LPB)</option>
+                                    <option value="1">Piuria / Leukosituria (> 5 /LPB)</option>
+                                </select>
+                                <span class="clinical-reference-range">Nilai Rujukan: <strong>0 - 5 sel / LPB</strong></span>
+                            </div>
+
+                            <div class="medical-field-card">
+                                <div class="field-label-row">
+                                    <label for="silinder_pada_urine">Silinder (Casts) Urine</label>
+                                    <span class="field-category-tag">Sedimen</span>
+                                </div>
+                                <select name="silinder_pada_urine" id="silinder_pada_urine" class="clinical-select" required>
+                                    <option value="0">Negatif / Silinder Hialin Normal</option>
+                                    <option value="1">Positif Silinder Patologis (Granular / Leukosit)</option>
+                                </select>
+                                <span class="clinical-reference-range">Nilai Rujukan: <strong>Negatif</strong></span>
+                            </div>
+
+                            <div class="medical-field-card">
+                                <div class="field-label-row">
+                                    <label for="kristal_pada_urine">Kristal Urine</label>
+                                    <span class="field-category-tag">Sedimen</span>
+                                </div>
+                                <select name="kristal_pada_urine" id="kristal_pada_urine" class="clinical-select" required>
+                                    <option value="0">Negatif / Normal</option>
+                                    <option value="1">Positif Kristaluria (Kalsium Oksalat / Asam Urat)</option>
+                                </select>
+                                <span class="clinical-reference-range">Nilai Rujukan: <strong>Negatif / Normal</strong></span>
+                            </div>
+
+                            <div class="medical-field-card">
+                                <div class="field-label-row">
+                                    <label for="yeast_pada_urine">Jamur (Yeast Cells) Urine</label>
+                                    <span class="field-category-tag">Sedimen</span>
+                                </div>
+                                <select name="yeast_pada_urine" id="yeast_pada_urine" class="clinical-select" required>
+                                    <option value="0">Negatif (Normal)</option>
+                                    <option value="1">Positif (Kandidiasis Saluran Kemih)</option>
+                                </select>
+                                <span class="clinical-reference-range">Nilai Rujukan: <strong>Negatif</strong></span>
+                            </div>
+
+                            <div class="medical-field-card">
+                                <div class="field-label-row">
+                                    <label for="bakteri_pada_urine">Bakteri Urine</label>
+                                    <span class="field-category-tag">Sedimen</span>
+                                </div>
+                                <select name="bakteri_pada_urine" id="bakteri_pada_urine" class="clinical-select" required>
+                                    <option value="0">Negatif (Normal)</option>
+                                    <option value="1">Positif (> 10^5 CFU/mL Indikasi ISK)</option>
+                                </select>
+                                <span class="clinical-reference-range">Nilai Rujukan: <strong>Negatif</strong></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SUBMIT ACTIONS FOOTER -->
+                    <div class="form-submit-footer">
+                        <div class="form-notice">
+                            Evaluasi klinis diproses secara komprehensif berdasarkan 57 parameter tanda vital & laboratorium terstandarisasi.
+                        </div>
+                        <div class="btn-group-actions">
+                            <button type="button" class="btn-clinical-reset" onclick="resetForm()">
+                                Reset Nilai Form
+                            </button>
+                            <button type="submit" class="btn-clinical-submit" id="btn-submit">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="9 11 12 14 22 4"></polyline>
+                                    <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+                                </svg>
+                                <span>Jalankan Evaluasi Medis MCU</span>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </main>
     </div>
+
+    <!-- CLIENT SCRIPT -->
     <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const resultElement = document.querySelector(".result");
-            if (resultElement) {
-                setTimeout(() => {
-                    resultElement.style.opacity = "1";
-                    resultElement.style.transform = "translateY(0)";
-                }, 300); // Penundaan 300ms
+        let cachedPresets = null;
+        let cachedCaseStudies = null;
+
+        // Fetch presets on load
+        async function initData() {
+            try {
+                const res = await fetch('/api/presets');
+                const data = await res.json();
+                if (data.status === 'success') {
+                    cachedPresets = data.presets;
+                    cachedCaseStudies = data.case_studies;
+                }
+            } catch (err) {
+                console.error("Gagal memuat preset:", err);
             }
+        }
+        initData();
+
+        // Select Case Study
+        async function selectCase(caseIndex) {
+            // Update active state on buttons
+            document.querySelectorAll('.case-card').forEach((card, idx) => {
+                if (idx === caseIndex) card.classList.add('active');
+                else card.classList.remove('active');
+            });
+
+            if (!cachedPresets || !cachedPresets[caseIndex]) {
+                const res = await fetch('/api/presets');
+                const data = await res.json();
+                cachedPresets = data.presets;
+                cachedCaseStudies = data.case_studies;
+            }
+
+            const presetData = cachedPresets[caseIndex];
+            const caseInfo = cachedCaseStudies ? cachedCaseStudies[caseIndex] : null;
+
+            // Populate Patient Demographics
+            if (caseInfo) {
+                document.getElementById('p-id').textContent = caseInfo.patient_id;
+                document.getElementById('p-name').textContent = caseInfo.patient_name;
+                document.getElementById('p-gender-age').textContent = caseInfo.gender_age;
+                document.getElementById('p-position').textContent = caseInfo.position;
+                document.getElementById('p-company').textContent = caseInfo.company;
+                document.getElementById('p-doctor').textContent = caseInfo.doctor;
+            }
+
+            // Populate Form Fields
+            const form = document.getElementById('mcu-form');
+            for (const [key, val] of Object.entries(presetData)) {
+                const el = form.elements[key];
+                if (el) {
+                    el.value = String(parseInt(val, 10));
+                }
+            }
+
+            // Execute instant AJAX prediction
+            submitAjaxPrediction();
+        }
+
+        // Reset form to blank
+        function resetForm() {
+            document.getElementById('mcu-form').reset();
+            document.getElementById('result-container').style.display = 'none';
+            document.querySelectorAll('.case-card').forEach(c => c.classList.remove('active'));
+        }
+
+        // AJAX Prediction Submission
+        async function submitAjaxPrediction() {
+            const form = document.getElementById('mcu-form');
+            const formData = new FormData(form);
+            const btn = document.getElementById('btn-submit');
+            btn.disabled = true;
+            btn.innerHTML = '<span>Menganalisis 57 Parameter...</span>';
+
+            try {
+                const res = await fetch('/api/predict', {
+                    method: 'POST',
+                    body: formData
+                });
+                const result = await res.json();
+
+                if (result.status === 'success') {
+                    renderCertificate(result);
+                } else {
+                    alert('Gagal memproses prediksi: ' + result.message);
+                }
+            } catch (err) {
+                console.error(err);
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = `
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="9 11 12 14 22 4"></polyline>
+                        <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+                    </svg>
+                    <span>Jalankan Evaluasi Medis MCU</span>
+                `;
+            }
+        }
+
+        // Render Certificate Result
+        function renderCertificate(data) {
+            const container = document.getElementById('result-container');
+            const certCard = document.getElementById('cert-card');
+            const statusDisplay = document.getElementById('cert-status-display');
+            const statusTitle = document.getElementById('cert-status-title');
+            const meaning = document.getElementById('cert-meaning');
+            const clearance = document.getElementById('cert-clearance');
+            const rec = document.getElementById('cert-recommendation');
+            const doctorName = document.getElementById('cert-doctor-name');
+            const findingsBody = document.getElementById('findings-table-body');
+
+            certCard.className = `certificate-card ${data.badge_class}`;
+            statusDisplay.textContent = `${data.prediction_label} — ${data.indo_label}`;
+            statusTitle.textContent = data.title;
+            meaning.textContent = data.meaning;
+            clearance.textContent = data.workplace_clearance;
+            rec.textContent = data.recommendation;
+
+            if (data.patient) {
+                doctorName.textContent = data.patient.doctor;
+                document.getElementById('doc-ref-no').textContent = `OHC-CERT/2024/XI-${data.patient.patient_id.split('-').pop()}`;
+            }
+
+            // Render Findings Table
+            if (data.findings && data.findings.length > 0) {
+                let html = '';
+                data.findings.forEach(f => {
+                    html += `
+                        <tr>
+                            <td><strong>${escapeHtml(f.category)}</strong></td>
+                            <td>${escapeHtml(f.param)}</td>
+                            <td>${escapeHtml(f.result)}</td>
+                            <td>${escapeHtml(f.normal)}</td>
+                            <td><span class="severity-pill ${f.severity}">${f.severity}</span></td>
+                        </tr>
+                    `;
+                });
+                findingsBody.innerHTML = html;
+            } else {
+                findingsBody.innerHTML = `
+                    <tr>
+                        <td><strong>Status Umum</strong></td>
+                        <td>Evaluasi Seluruh Parameter Lab & Fisik</td>
+                        <td>Seluruh parameter dalam batas normal rujukan medis</td>
+                        <td>Sesuai Standar Klinis Kemenkes</td>
+                        <td><span class="severity-pill normal">Normal</span></td>
+                    </tr>
+                `;
+            }
+
+            container.style.display = 'block';
+            container.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        function escapeHtml(str) {
+            return String(str).replace(/[&<>"']/g, function(m) {
+                return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' }[m];
+            });
+        }
+
+        // Intercept form submit
+        document.getElementById('mcu-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            submitAjaxPrediction();
+        });
+
+        // Tabs Navigation
+        const tabs = document.querySelectorAll('.tab-btn');
+        const panes = document.querySelectorAll('.tab-pane');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                const target = tab.getAttribute('data-tab');
+
+                if (target === 'all') {
+                    panes.forEach(p => p.classList.add('active'));
+                } else {
+                    panes.forEach(p => p.classList.remove('active'));
+                    const activePane = document.getElementById(target);
+                    if (activePane) activePane.classList.add('active');
+                }
+            });
         });
     </script>
-    
 </body>
-
 </html>
